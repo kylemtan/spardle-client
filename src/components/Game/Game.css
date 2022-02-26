@@ -3,8 +3,8 @@
   }
   
   .entry {
-    width: 7vh;
-    height: 7vh;
+    width: 6vh;
+    height: 6vh;
     margin: 5px;
     border: 5px solid rgb(71, 163, 255);
     font-family: Arial;
@@ -25,9 +25,10 @@
     cursor: pointer;
     border: 3px solid #999999;
     border-radius: 5px;
-    width: 30px;
-    height: 50px;
-    font-family: Arial;
+    max-width: 30px;
+    width: calc(100vw/11vw - 5px);
+    max-height: 50px;
+    height: calc((100vw/11vw - 5px)/3*5);
     font-weight: 800;
     font-size: 20px;
     line-height: 0;
