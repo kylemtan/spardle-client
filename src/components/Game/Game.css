@@ -28,7 +28,7 @@
     max-width: 30px;
     width: calc(100/11vw - 5px);
     max-height: 50px;
-    height: calc(((100vw/11) - 5px)/3*5);
+    height: calc((9.09vw - 5px)/3*5);
     font-weight: 800;
     font-size: 20px;
     line-height: 0;
