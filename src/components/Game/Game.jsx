@@ -13277,116 +13277,201 @@ function Game(props) {
       <div
             id="letterq"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "q",
+              keyCode: "66"
+            })}}
           >
             q
           </div>
           <div
             id="letterw"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "w",
+              keyCode: "66"
+            })}}
           >
             w
           </div>
           <div
             id="lettere"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "e",
+              keyCode: "66"
+            })}}
           >
             e
           </div>
           <div
             id="letterr"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "r",
+              keyCode: "66"
+            })}}
           >
             r
           </div>
           <div
             id="lettert"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "t",
+              keyCode: "66"
+            })}}
           >
             t
           </div>
           <div
             id="lettery"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "y",
+              keyCode: "66"
+            })}}
           >
             y
           </div>
           <div
             id="letteru"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "u",
+              keyCode: "66"
+            })}}
           >
             u
           </div>
           <div
             id="letteri"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "i",
+              keyCode: "66"
+            })}}
           >
             i
           </div>
           <div
             id="lettero"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "o",
+              keyCode: "66"
+            })}}
           >
             o
           </div>
           <div
             id="letterp"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "p",
+              keyCode: "66"
+            })}}
           >
             p
+          </div>
+          <div
+            className="letter"
+            onClick={() => {onKeyPress({
+              key: "Backspace",
+              keyCode: "0"
+            })}}
+          >
+            ⌫
           </div>
         </div>
         <div className="letterContainer">
           <div
             id="lettera"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "a",
+              keyCode: "66"
+            })}}
           >
             a
           </div>
           <div
             id="letters"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "s",
+              keyCode: "66"
+            })}}
           >
             s
           </div>
           <div
             id="letterd"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "d",
+              keyCode: "66"
+            })}}
           >
             d
           </div>
           <div
             id="letterf"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "f",
+              keyCode: "66"
+            })}}
           >
             f
           </div>
           <div
             id="letterg"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "g",
+              keyCode: "66"
+            })}}
           >
             g
           </div>
           <div
             id="letterh"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "h",
+              keyCode: "66"
+            })}}
           >
             h
           </div>
           <div
             id="letterj"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "j",
+              keyCode: "66"
+            })}}
           >
             j
           </div>
           <div
             id="letterk"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "k",
+              keyCode: "66"
+            })}}
           >
             k
           </div>
           <div
             id="letterl"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "l",
+              keyCode: "66"
+            })}}
           >
             l
           </div>
@@ -13395,44 +13480,81 @@ function Game(props) {
           <div
             id="letterz"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "z",
+              keyCode: "66"
+            })}}
           >
             z
           </div>
           <div
             id="letterx"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "x",
+              keyCode: "66"
+            })}}
           >
             x
           </div>
           <div
             id="letterc"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "c",
+              keyCode: "66"
+            })}}
           >
             c
           </div>
           <div
             id="letterv"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "v",
+              keyCode: "66"
+            })}}
           >
             v
           </div>
           <div
             id="letterb"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "b",
+              keyCode: "66"
+            })}}
           >
             b
           </div>
           <div
             id="lettern"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "n",
+              keyCode: "66"
+            })}}
           >
             n
           </div>
           <div
             id="letterm"
             className="letter"
+            onClick={() => {onKeyPress({
+              key: "m",
+              keyCode: "66"
+            })}}
           >
             m
+          </div>
+          <div
+            className="letter"
+            onClick={() => {onKeyPress({
+              key: "Enter",
+              keyCode: "0"
+            })}}
+          >
+            ↵
           </div>
       </div>
       <ul className="game-leaderboard">

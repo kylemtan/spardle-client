@@ -1,3 +1,10 @@
 .rule-line {
-    margin: 2.5px;
+    margin: 5px;
+}
+
+.rule-container {
+    padding: 10px;
+    background-color: #EEEEEE;
+    margin: 10px;
+    border-radius: 25px;
 }

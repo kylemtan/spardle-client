@@ -8,8 +8,8 @@ import Game from "./components/Game/Game.jsx";
 import End from "./components/End/End.jsx"
 import { useState } from "react";
 
-// const socket = io.connect("http://localhost:1337");
-const socket = io.connect("https://spardle.herokuapp.com");
+const socket = io.connect("http://localhost:1337");
+// const socket = io.connect("https://spardle.herokuapp.com/");
 
 function App() {
   const [username, setUsername] = useState("");
@@ -64,7 +64,7 @@ function App() {
           path="/end"
           element={<End setUsers={(e) => {
             setUsers(e);
-          }} socket={socket} users={users} room={roomName} />}
+          }} socket={socket} users={users} username={username} room={roomName} />}
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

@@ -47,7 +47,7 @@ function Home(props) {
         <button className="page-buttons" onClick={joinRoom}>Join Room</button>
         <p id="error"></p>
         <h2>Rules</h2>
-        <div>
+        <div className="rule-container">
           <p className="rule-line">Enter a username and room name and click join room.</p>
           <p className="rule-line">Invite your friends to join the same room as you. </p>
           <p className="rule-line">Once you have two or more players, anyone can start the game.</p> 
