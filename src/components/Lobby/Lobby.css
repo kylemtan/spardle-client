@@ -1,0 +1,10 @@
+.lobby-list {
+    padding: 0;
+}
+
+.lobby-list-item {
+    list-style-type: none;
+    background-color: #EEEEEE;
+    padding: 10px;
+    border-radius: 50px;
+}

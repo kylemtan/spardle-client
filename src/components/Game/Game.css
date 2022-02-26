@@ -1,0 +1,54 @@
+  .entryRow {
+    display: flex;
+  }
+  
+  .entry {
+    width: 7vh;
+    height: 7vh;
+    margin: 5px;
+    border: 5px solid rgb(71, 163, 255);
+    font-family: Arial;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+  }
+  
+  .letterContainer {
+    display: flex;
+  }
+  
+  .letter {
+    border: 3px solid #999999;
+    border-radius: 5px;
+    width: 30px;
+    height: 50px;
+    font-family: Arial;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+  }
+
+  .game-leaderboard {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(71, 163, 255);
+  }
+
+  .game-leaderboard-item {
+    list-style-type: none;
+    background-color: #EEEEEE;
+    padding: 10px;
+    border-radius: 50px;
+    margin: 10px;
+  }
