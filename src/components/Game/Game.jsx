@@ -13040,7 +13040,6 @@ function Game(props) {
   ];
 
   useEffect(() => {
-    console.log(entries);
     document.addEventListener("keydown", (e) => {
       if (keyName !== e.key) {
         keyName = e.key;
@@ -13061,7 +13060,7 @@ function Game(props) {
         });
       });
     };
-  });
+  }, []);
 
   useEffect(() => {
     if (props.room === "") {
@@ -13069,7 +13068,6 @@ function Game(props) {
     }
     props.socket.on("update game users", (data) => {
       props.setUsers(data);
-      console.log("users updated", data)
     });
     props.socket.on("end game", (data) => {
       props.setUsers(data);
@@ -13103,7 +13101,6 @@ function Game(props) {
       }
     }
     let tempArray = entries;
-    console.log(currentInputRow);
     tempArray[currentInputRow] = tempEntries;
 
     setEntries([...tempArray]);
@@ -13196,16 +13193,6 @@ function Game(props) {
         if (guess[i] === word[e] && guess[e] === word[e]) {
           correctCounts++;
         }
-        if (e === 4) {
-          console.log(
-            "On letter",
-            guess[i],
-            "incorrect places",
-            guessCount,
-            wordCount,
-            correctCounts
-          );
-        }
       }
       if (guess[i] === word[i]) {
         document.getElementById("letter" + guess[i]).style.backgroundColor =
@@ -13228,7 +13215,6 @@ function Game(props) {
     setYellowEntries([...tempYellowEntries]);
     colorEntries();
 
-    console.log(currentInputRow);
     if (entries[currentInputRow].join("") === word) {
       document.getElementById("message").innerHTML = "Correct!";
       props.socket.emit("game update", {
@@ -13248,6 +13234,7 @@ function Game(props) {
         room: props.room,
         correct: false,
       });
+      document.getElementById("message").innerHTML = "No more guesses! The word was " + word;
       newWord();
       currentWord++;
     }

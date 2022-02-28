@@ -12,14 +12,12 @@ function Lobby(props) {
     }
     props.socket.on("update users", (data) => {
       props.setUsers(data);
-      console.log(data)
     });
     props.socket.on("not enough players", (data) => {
       document.getElementById("error").innerHTML = "Not enough players in the lobby."
     });
     props.socket.on("send words", (data) => {
       props.setWords(data);
-      console.log(props.users, props.words);
       navigate("/game")
     })
   }, [props, navigate])
