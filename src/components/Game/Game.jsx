@@ -13042,12 +13042,12 @@ function Game(props) {
   ];
 
   useEffect(() => {
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener("touchstart", (e) => {
       if (keyName !== e.key) {
         keyName = e.key;
         onKeyPress(e);
       }
-      window.addEventListener("keyup", function () {
+      window.addEventListener("touchend", function () {
         keyName = "";
       });
     });
@@ -13058,12 +13058,12 @@ function Game(props) {
 
     return function removeListeners() {
       clearInterval(interval);
-      document.removeEventListener("keydown", (e) => {
+      document.removeEventListener("touchstart", (e) => {
         if (keyName !== e.key) {
           keyName = e.key;
           onKeyPress(e);
         }
-        window.addEventListener("keyup", function () {
+        window.addEventListener("touchend", function () {
           keyName = "";
         });
       });
