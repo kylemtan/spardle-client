@@ -44,7 +44,7 @@ function End(props) {
       { endUsers ? <ul className="end-leaderboard">
         {endUsers.map((user, index) => (
           <li className="end-leaderboard-item" key={index}>
-            <p>#{index + 1}: {+ user.username}</p>
+            <p>#{index + 1}: {user.username}</p>
             <p>{user.score}</p>
           </li>
         ))}
