@@ -71,6 +71,7 @@
     color: purple;
     opacity: 0;
     font-size: 100px;
+    pointer-events: none;
   }
 
   .fadeOut {
