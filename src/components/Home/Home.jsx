@@ -35,11 +35,22 @@ function Home(props) {
 
   useEffect(() => {
     window.addEventListener("keyup", function (event) {
-      if(event.keyCode === 13){
+      if (event.keyCode === 13) {
         event.preventDefault();
-        document.getElementById("join-button").click();
-      }
+        if(document.getElementById("join-button")){
+          document.getElementById("join-button").click();
+        }      }
     });
+    return function removeListeners() {
+      document.removeEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          if(document.getElementById("join-button")){
+            document.getElementById("join-button").click();
+          }
+        }
+      });
+    };
   }, []);
 
   return (

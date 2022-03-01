@@ -12989,6 +12989,8 @@ function Game(props) {
     "z",
   ];
 
+  const [seconds, setSeconds] = useState(3);
+
   const [entries, setEntries] = useState([
     ["", "", "", "", ""],
     ["", "", "", "", ""],
@@ -13049,7 +13051,13 @@ function Game(props) {
         keyName = "";
       });
     });
+
+    let interval = setInterval(() => {
+      setSeconds(seconds => seconds - 1);
+    }, 1000);
+
     return function removeListeners() {
+      clearInterval(interval);
       document.removeEventListener("keydown", (e) => {
         if (keyName !== e.key) {
           keyName = e.key;
@@ -13063,11 +13071,33 @@ function Game(props) {
   }, []);
 
   useEffect(() => {
+    if(seconds <= 0){
+      props.socket.emit("end game", props.room);
+    }
+  }, [seconds])
+
+  useEffect(() => {
     if (props.room === "") {
       navigate("/");
     }
     props.socket.on("update game users", (data) => {
       props.setUsers(data);
+    });
+    props.socket.on("banner", (object) => {
+      console.log(object)
+      if(object.correct){
+        document.getElementById("banner").innerHTML = object.username + " + 1!"
+        document.getElementById("banner").style.color = "green"
+        document.getElementById("banner").classList.remove("fadeOut");
+        void document.getElementById("banner").offsetWidth;
+        document.getElementById("banner").classList.add("fadeOut");
+      } else {
+        document.getElementById("banner").innerHTML = object.username + " - 1!"
+        document.getElementById("banner").style.color = "red"
+        document.getElementById("banner").classList.remove("fadeOut");
+        void document.getElementById("banner").offsetWidth;
+        document.getElementById("banner").classList.add("fadeOut");
+      }
     });
     props.socket.on("end game", (data) => {
       props.setUsers(data);
@@ -13234,7 +13264,7 @@ function Game(props) {
         room: props.room,
         correct: false,
       });
-      document.getElementById("message").innerHTML = "No more guesses! The word was " + word;
+      document.getElementById("message").innerHTML = "No more guesses! The word was " + word + ".";
       newWord();
       currentWord++;
     }
@@ -13243,6 +13273,13 @@ function Game(props) {
   return (
     <div className="page-container">
       <h1 className="page-headers">Spardle</h1>
+      <ul className="game-leaderboard">
+        <h1>Leaderboard:</h1>
+        {props.users.map((user, index) => (
+          <li className="game-leaderboard-item" key={user.username + index}>{user.username}: {user.score}</li>
+        ))}
+      </ul>
+      <p>{Math.floor(seconds / 60)}:{('0' + (seconds % 60)).slice(-2)}</p>
       <div>
         {entries.map((array, index1) => (
           <div key={"top" + index1} className="entryRow">
@@ -13361,15 +13398,6 @@ function Game(props) {
           >
             p
           </div>
-          <div
-            className="letter"
-            onClick={() => {onKeyPress({
-              key: "Backspace",
-              keyCode: "0"
-            })}}
-          >
-            ⌫
-          </div>
         </div>
         <div className="letterContainer">
           <div
@@ -13464,6 +13492,15 @@ function Game(props) {
           </div>
         </div>
         <div className="letterContainer">
+        <div
+            className="letter"
+            onClick={() => {onKeyPress({
+              key: "Backspace",
+              keyCode: "0"
+            })}}
+          >
+            ⌫
+          </div>
           <div
             id="letterz"
             className="letter"
@@ -13543,14 +13580,8 @@ function Game(props) {
           >
             ↵
           </div>
-      </div>
-      <ul className="game-leaderboard">
-        <h1>Leaderboard:</h1>
-        {props.users.map((user, index) => (
-          <li className="game-leaderboard-item" key={user.username + index}>{user.username}: {user.score}</li>
-        ))}
-      </ul>
-      
+      </div>      
+      <h1 className="fadeOut" id="banner">GO!</h1>
     </div>
   );
 }
