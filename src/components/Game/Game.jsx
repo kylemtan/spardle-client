@@ -12989,7 +12989,7 @@ function Game(props) {
     "z",
   ];
 
-  const [seconds, setSeconds] = useState(3);
+  const [seconds, setSeconds] = useState(300);
 
   const [entries, setEntries] = useState([
     ["", "", "", "", ""],
