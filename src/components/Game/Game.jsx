@@ -13101,6 +13101,7 @@ function Game(props) {
     });
     props.socket.on("end game", (data) => {
       props.setUsers(data);
+      newWord();
       props.socket.emit("leave", props.room);
       navigate("/end");
     });
