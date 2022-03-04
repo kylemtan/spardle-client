@@ -22,7 +22,7 @@ function Home(props) {
   const joinRoom = () => {
     if (username !== "" && roomName !== "") {
       let user = {
-        username: username,
+        username: username.toLowerCase(),
         room: roomName,
       };
       props.socket.emit("join", user);
