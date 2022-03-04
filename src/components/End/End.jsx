@@ -49,12 +49,18 @@ function End(props) {
           </li>
         ))}
       </ul> : <h1>Loading...</h1>}
+      <h1>Words</h1>
+      {props.words.map((word, index) => (
+          <p key={index}>{word}</p>
+            
+        ))}
       <button className="page-buttons" onClick={returnMenu}>
         Exit to Main Menu
       </button>
       {/* <button className="page-buttons" onClick={rejoinRoom}>
         Rejoin Room
       </button> */}
+
     </div>
   );
 }
