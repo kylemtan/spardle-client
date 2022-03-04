@@ -13159,6 +13159,7 @@ function Game(props) {
       }
     }
     if (currentWord <= 19) {
+      currentWord++;
       word = props.words[currentWord].word;
     } else {
       word = answers[Math.floor(Math.random() * answers.length)];
@@ -13247,7 +13248,6 @@ function Game(props) {
         correct: true,
       });
       newWord();
-      currentWord++;
       return;
     }
     if (currentInputRow !== 5) {
@@ -13260,7 +13260,6 @@ function Game(props) {
       });
       document.getElementById("message").innerHTML = "No more guesses! The word was " + word + ".";
       newWord();
-      currentWord++;
     }
   }
 
