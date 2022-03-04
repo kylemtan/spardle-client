@@ -14,7 +14,7 @@ html, body {
 .page-container {
   width: 100%;
   height: 100vh;
-  background-color: #fde9c5;
+  background-color: rgba(36, 0, 255, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,6 +31,7 @@ html, body {
   padding: 10px;
   border: 5px solid rgb(71, 163, 255);
   border-radius: 50px;
+  margin: 10px 0;
 }
 
 .page-buttons {
@@ -53,4 +54,35 @@ html, body {
 .page-buttons:active {
   top: 5px;
   box-shadow: 0 2px rgb(0, 128, 255);
+}
+
+.centered-box-container {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-box {
+  width: 313px;
+  background: #ffffff;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px 20px 10px;
+}
+
+.centered-box-lobby {
+  background: #ffffff;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  padding: 10px 20px;
 }

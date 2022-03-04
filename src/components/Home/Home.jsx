@@ -16,20 +16,24 @@ function Home(props) {
     props.socket.on("already started", (data) => {
       document.getElementById("error").innerHTML =
         "This room already has a game in progress.";
+        document.getElementById("error").style.display = "block";
+
     });
   }, [props, navigate]);
 
   const joinRoom = () => {
     if (username !== "" && roomName !== "") {
       let user = {
-        username: username.toLowerCase(),
-        room: roomName,
+        username: username,
+        room: roomName.toLowerCase(),
       };
       props.socket.emit("join", user);
       props.setVars(username, roomName);
     } else {
       document.getElementById("error").innerHTML =
         "You must fill in both fields.";
+        document.getElementById("error").style.display = "block";
+
     }
   };
 
@@ -37,35 +41,41 @@ function Home(props) {
     window.addEventListener("keyup", function (event) {
       if (event.keyCode === 13) {
         event.preventDefault();
-        if(document.getElementById("join-button")){
+        if (document.getElementById("join-button")) {
           document.getElementById("join-button").click();
-        }      }
+        }
+      }
     });
   }, []);
 
   return (
     <div className="page-container">
-      <h1 className="page-headers">Spardle</h1>
-      <h2>Username</h2>
-      <input
-        autoFocus
-        className="page-inputs"
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
-      ></input>
-      <h2>Room Name</h2>
-      <input
-        className="page-inputs"
-        onChange={(e) => {
-          setRoomName(e.target.value.toLowerCase());
-        }}
-      ></input>
-      <button className="page-buttons" id="join-button" onClick={joinRoom}>
-        Join Room
-      </button>
-      <p id="error"></p>
-      <h2>Rules</h2>
+      <div className="centered-box-container">
+        <div className="centered-box">
+          <h1 className="page-headers">Spardle!</h1>
+          <input
+            autoFocus
+            placeholder="Username..."
+            className="page-inputs"
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          ></input>
+          <input
+            placeholder="Room Name..."
+            className="page-inputs"
+            onChange={(e) => {
+              setRoomName(e.target.value.toLowerCase());
+            }}
+          ></input>
+          <p style={{display: "none"}} id="error"></p>
+          <button className="page-buttons" id="join-button" onClick={joinRoom}>
+            Join Room
+          </button>
+          
+        </div>
+      </div>
+      {/* <h2>Rules</h2>
       <div className="rule-container">
         <p className="rule-line">
           Enter a username and room name and click join room.
@@ -102,7 +112,7 @@ function Home(props) {
           If you cannot guess the word in 6 tries, you will lose a point.
         </p>
         <p className="rule-line">First person to 6 points wins!</p>
-      </div>
+      </div> */}
     </div>
   );
 }

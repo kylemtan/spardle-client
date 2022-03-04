@@ -13111,7 +13111,7 @@ function Game(props) {
     } else if (event.keyCode >= 65 && event.keyCode <= 90) {
       for (let i = 0; i < tempEntries.length; i++) {
         if (tempEntries[i] === "") {
-          tempEntries[i] = event.key;
+          tempEntries[i] = event.key.toUpperCase();
           console.log("attempted key change")
           break;
         }
@@ -13188,7 +13188,7 @@ function Game(props) {
         "The word must be 5 letters.";
       return;
     }
-    if (answers.indexOf(entries[currentInputRow].join("")) === -1) {
+    if (answers.indexOf(entries[currentInputRow].join("").toLowerCase()) === -1) {
       document.getElementById("message").innerHTML = "Word not in word list.";
       return;
     }
@@ -13196,39 +13196,41 @@ function Game(props) {
     let guess = entries[currentInputRow];
     let tempGreenEntries = greenEntries;
     let tempYellowEntries = yellowEntries;
+    let checkWord = word.toUpperCase();
     for (var i = 0; i < 5; i++) {
       let guessCount = 1;
       let wordCount = 0;
       let correctCounts = 0;
+      
       for (var e = 0; e < 5; e++) {
         if (
           i !== e &&
           e <= i &&
           guess[i] === guess[e] &&
-          guess[e] !== word[e]
+          guess[e] !== checkWord[e]
         ) {
           guessCount++;
         }
-        if (guess[i] === word[e]) {
+        if (guess[i] === checkWord[e]) {
           wordCount++;
         }
-        if (guess[i] === word[e] && guess[e] === word[e]) {
+        if (guess[i] === checkWord[e] && guess[e] === checkWord[e]) {
           correctCounts++;
         }
       }
-      if (guess[i] === word[i]) {
-        document.getElementById("letter" + guess[i]).style.backgroundColor =
+      if (guess[i] === checkWord[i]) {
+        document.getElementById("letter" + guess[i].toLowerCase()).style.backgroundColor =
           "green";
         tempGreenEntries[currentInputRow][i] = true;
       } else if (
-        word.includes(guess[i]) &&
+        checkWord.includes(guess[i]) &&
         guessCount + correctCounts <= wordCount
       ) {
-        document.getElementById("letter" + guess[i]).style.backgroundColor =
+        document.getElementById("letter" + guess[i].toLowerCase()).style.backgroundColor =
           "yellow";
         tempYellowEntries[currentInputRow][i] = true;
       } else {
-        document.getElementById("letter" + guess[i]).style.backgroundColor =
+        document.getElementById("letter" + guess[i].toLowerCase()).style.backgroundColor =
           "lightgray";
       }
     }
@@ -13237,7 +13239,7 @@ function Game(props) {
     setYellowEntries([...tempYellowEntries]);
     colorEntries();
 
-    if (entries[currentInputRow].join("") === word) {
+    if (entries[currentInputRow].join("").toLowerCase() === word) {
       document.getElementById("message").innerHTML = "Correct!";
       props.socket.emit("game update", {
         username: props.username,
@@ -13264,14 +13266,13 @@ function Game(props) {
 
   return (
     <div className="page-container">
-      <h1 className="page-headers">Spardle</h1>
       <ul className="game-leaderboard">
-        <h1>Leaderboard:</h1>
+        <h1 style={{marginTop: 0}}>Leaderboard:</h1>
         {props.users.map((user, index) => (
           <li className="game-leaderboard-item" key={user.username + index}>{user.username}: {user.score}</li>
         ))}
       </ul>
-      <p>{Math.floor(seconds / 60)}:{('0' + (seconds % 60)).slice(-2)}</p>
+      <p className="game-timer">{Math.floor(seconds / 60)}:{('0' + (seconds % 60)).slice(-2)}</p>
       <div>
         {entries.map((array, index1) => (
           <div key={"top" + index1} className="entryRow">
@@ -13298,7 +13299,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            q
+            Q
           </div>
           <div
             id="letterw"
@@ -13308,7 +13309,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            w
+            W
           </div>
           <div
             id="lettere"
@@ -13318,7 +13319,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            e
+            E
           </div>
           <div
             id="letterr"
@@ -13328,7 +13329,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            r
+            R
           </div>
           <div
             id="lettert"
@@ -13338,7 +13339,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            t
+            T
           </div>
           <div
             id="lettery"
@@ -13348,7 +13349,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            y
+            Y
           </div>
           <div
             id="letteru"
@@ -13358,7 +13359,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            u
+            U
           </div>
           <div
             id="letteri"
@@ -13368,7 +13369,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            i
+            I
           </div>
           <div
             id="lettero"
@@ -13378,7 +13379,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            o
+            O
           </div>
           <div
             id="letterp"
@@ -13388,7 +13389,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            p
+            P
           </div>
         </div>
         <div className="letterContainer">
@@ -13400,7 +13401,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            a
+            A
           </div>
           <div
             id="letters"
@@ -13410,7 +13411,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            s
+            S
           </div>
           <div
             id="letterd"
@@ -13420,7 +13421,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            d
+            D
           </div>
           <div
             id="letterf"
@@ -13430,7 +13431,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            f
+            F
           </div>
           <div
             id="letterg"
@@ -13440,7 +13441,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            g
+            G
           </div>
           <div
             id="letterh"
@@ -13450,7 +13451,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            h
+            H
           </div>
           <div
             id="letterj"
@@ -13460,7 +13461,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            j
+            J
           </div>
           <div
             id="letterk"
@@ -13470,7 +13471,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            k
+            K
           </div>
           <div
             id="letterl"
@@ -13480,18 +13481,18 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            l
+            L
           </div>
         </div>
         <div className="letterContainer">
         <div
             className="letter"
             onClick={() => {onKeyPress({
-              key: "Backspace",
+              key: "Enter",
               keyCode: "0"
             })}}
           >
-            ⌫
+            ↵
           </div>
           <div
             id="letterz"
@@ -13501,7 +13502,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            z
+            Z
           </div>
           <div
             id="letterx"
@@ -13511,7 +13512,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            x
+            X
           </div>
           <div
             id="letterc"
@@ -13521,7 +13522,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            c
+            C
           </div>
           <div
             id="letterv"
@@ -13531,7 +13532,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            v
+            V
           </div>
           <div
             id="letterb"
@@ -13541,7 +13542,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            b
+            B
           </div>
           <div
             id="lettern"
@@ -13551,7 +13552,7 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            n
+            N
           </div>
           <div
             id="letterm"
@@ -13561,16 +13562,17 @@ function Game(props) {
               keyCode: "66"
             })}}
           >
-            m
+            M
           </div>
+
           <div
             className="letter"
             onClick={() => {onKeyPress({
-              key: "Enter",
+              key: "Backspace",
               keyCode: "0"
             })}}
           >
-            ↵
+            ⌫
           </div>
       </div>      
       <h1 className="fadeOut" id="banner">GO!</h1>

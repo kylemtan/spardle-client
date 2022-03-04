@@ -32,15 +32,22 @@ function Lobby(props) {
 
   return (
       <div className="page-container">
-        <h1 className="page-headers">{props.room}</h1>
-        <h2>Players in lobby:</h2>
-        <ul className="lobby-list">
+        <div className="centered-box-container">
+          <div className='centered-box-lobby'>
+          <h1 className="page-headers">Players in room {props.room}:</h1>
+          <div className='lobby-list'>
           {props.users.map((user, index) => (
-            <li className="lobby-list-item" key={index}>{user.username}</li>
+            <p className="lobby-list-item" key={index}>{user.username}</p>
           ))}
-        </ul>
-        <button className="page-buttons" onClick={startGame}>Start</button>
+          </div>
         <p id="error"></p>
+        <button className="page-buttons" onClick={startGame}>Spardle!</button>
+        
+          </div>
+        </div>
+
+
+
 
       </div>
   );
