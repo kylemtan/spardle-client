@@ -64,7 +64,7 @@ function App() {
           path="/end"
           element={<End setUsers={(e) => {
             setUsers(e);
-          }} socket={socket} users={users} username={username} room={roomName} />}
+          }} socket={socket} users={users} username={username} words={words} room={roomName} />}
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

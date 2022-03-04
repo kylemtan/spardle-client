@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 function End(props) {
   const navigate = useNavigate();
   const [endUsers, setEndUsers] = useState([]);
+  const [endWords, setEndWords] = useState([]);
 
   useEffect(() => {
     if (props.room === "") {
@@ -16,6 +17,10 @@ function End(props) {
       userArray = props.users;
       userArray.sort((a, b) => (a.score > b.score) ? -1 : 1)
       setEndUsers([...userArray]);
+    }
+    if(props.words){
+      let endwords = props.words;
+      setEndWords([...endwords]);
     }
 
   }, [props.users]);
@@ -50,7 +55,7 @@ function End(props) {
         ))}
       </ul> : <h1>Loading...</h1>}
       <h1>Words</h1>
-      {props.words.map((word, index) => (
+      {endWords.map((word, index) => (
           <p key={index}>{word}</p>
             
         ))}
