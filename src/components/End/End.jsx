@@ -18,10 +18,10 @@ function End(props) {
       userArray.sort((a, b) => (a.score > b.score) ? -1 : 1)
       setEndUsers([...userArray]);
     }
-    if(props.words){
-      let endwords = props.words;
-      setEndWords([...endwords]);
-    }
+    // if(props.words){
+    //   let endwords = props.words;
+    //   setEndWords([...endwords]);
+    // }
 
   }, [props.users]);
 
@@ -55,10 +55,10 @@ function End(props) {
         ))}
       </ul> : <h1>Loading...</h1>}
       <h1>Words</h1>
-      {endWords.map((word, index) => (
+      {/* {endWords.map((word, index) => (
           <p key={index}>{word}</p>
             
-        ))}
+        ))} */}
       <button className="page-buttons" onClick={returnMenu}>
         Exit to Main Menu
       </button>
