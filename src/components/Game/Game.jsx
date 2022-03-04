@@ -12957,6 +12957,7 @@ var keyName = "";
 var currentInputRow = 0;
 var currentWord = 1;
 var word = "";
+var isMounted = true;
 
 function Game(props) {
   const navigate = useNavigate();
@@ -12989,7 +12990,7 @@ function Game(props) {
     "z",
   ];
 
-  const [seconds, setSeconds] = useState(300);
+  const [seconds, setSeconds] = useState(2);
 
   const [entries, setEntries] = useState([
     ["", "", "", "", ""],
@@ -12999,14 +13000,6 @@ function Game(props) {
     ["", "", "", "", ""],
     ["", "", "", "", ""],
   ]);
-  let defaultEntries = [
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-  ];
 
   const [greenEntries, setGreenEntries] = useState([
     [false, false, false, false, false],
@@ -13016,14 +13009,7 @@ function Game(props) {
     [false, false, false, false, false],
     [false, false, false, false, false],
   ]);
-  let defaultGreenEntries = [
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-  ];
+
   const [yellowEntries, setYellowEntries] = useState([
     [false, false, false, false, false],
     [false, false, false, false, false],
@@ -13032,51 +13018,46 @@ function Game(props) {
     [false, false, false, false, false],
     [false, false, false, false, false],
   ]);
-  let defaultYellowEntries = [
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-  ];
 
   useEffect(() => {
-    document.addEventListener("keydown", (e) => {
-      if (keyName !== e.key) {
-        keyName = e.key;
-        onKeyPress(e);
-      }
-      window.addEventListener("keyup", function () {
-        keyName = "";
-      });
-    });
-
+    isMounted = true;
     let interval = setInterval(() => {
       setSeconds(seconds => seconds - 1);
     }, 1000);
+    console.log("use effect ran")
+    if(isMounted){
+    document.addEventListener("keydown", (e) => {
 
-    return function removeListeners() {
-      clearInterval(interval);
-      document.removeEventListener("keydown", (e) => {
+        console.log("key held down")
         if (keyName !== e.key) {
+          console.log("function triggered")
           keyName = e.key;
           onKeyPress(e);
         }
         window.addEventListener("keyup", function () {
           keyName = "";
         });
-      });
-    };
+    });
+
+  }
+    return () => { isMounted = false; 
+      console.log("set false")
+      clearInterval(interval);}
   }, []);
 
   useEffect(() => {
+    console.log(0)
+    if(isMounted){
+      console.log(1)
     if(seconds <= 0){
+      console.log(0);
       props.socket.emit("end game", props.room);
     }
+  }
   }, [seconds])
 
   useEffect(() => {
+    if(isMounted){
     if (props.room === "") {
       navigate("/");
     }
@@ -13105,13 +13086,17 @@ function Game(props) {
       props.socket.emit("leave", props.room);
       navigate("/end");
     });
+  }
   }, [props, navigate]);
 
   useEffect(() => {
+    if(isMounted){
         word = props.words[0].word;
+    }
   }, [props.words]);
 
   function onKeyPress(event) {
+    console.log("got into function");
     let tempEntries = entries[currentInputRow];
     if (event.key === "Backspace") {
       for (let i = 0; i < tempEntries.length; i++) {
@@ -13127,13 +13112,15 @@ function Game(props) {
       for (let i = 0; i < tempEntries.length; i++) {
         if (tempEntries[i] === "") {
           tempEntries[i] = event.key;
+          console.log("attempted key change")
           break;
         }
       }
     }
     let tempArray = entries;
     tempArray[currentInputRow] = tempEntries;
-
+  console.log(tempArray)
+  console.log(entries)
     setEntries([...tempArray]);
   }
 
@@ -13182,12 +13169,16 @@ function Game(props) {
     setEntries([...tempArray3]);
     for (let i = 0; i < 6; i++) {
       for (let e = 0; e < 5; e++) {
+        if(document.getElementById(i + " " + e)){
           document.getElementById(i + " " + e).style.backgroundColor = "white";
+        }
       }
     }
     for(let i = 0; i < letters.length; i++){
-      document.getElementById("letter" + letters[i]).style.backgroundColor =
+      if(document.getElementById("letter" + letters[i])){
+        document.getElementById("letter" + letters[i]).style.backgroundColor =
           "white";
+      }
     }
   };
 

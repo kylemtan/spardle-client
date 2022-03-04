@@ -19,16 +19,20 @@
   
   .letterContainer {
     display: flex;
+
   }
   
+  .letterContainer:nth-child(3) {
+    margin-bottom: 20px;
+  }
+
   .letter {
     cursor: pointer;
-    border: 3px solid #999999;
     border-radius: 5px;
     max-width: 32px;
-    width: calc(10vw - 6px);
+    width: calc(10vw - 2px);
     max-height: 50px;
-    height: calc((9.09vw - 5px)/3*5);
+    height: calc((9.09vw - 2px)/3*5);
     font-weight: 800;
     font-size: 20px;
     line-height: 0;
@@ -36,7 +40,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    margin-bottom: 20px;
+    margin: 1px;
   }
 
   .letter:active {

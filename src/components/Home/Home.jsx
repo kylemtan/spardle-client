@@ -41,16 +41,6 @@ function Home(props) {
           document.getElementById("join-button").click();
         }      }
     });
-    return function removeListeners() {
-      document.removeEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-          event.preventDefault();
-          if(document.getElementById("join-button")){
-            document.getElementById("join-button").click();
-          }
-        }
-      });
-    };
   }, []);
 
   return (
@@ -68,7 +58,7 @@ function Home(props) {
       <input
         className="page-inputs"
         onChange={(e) => {
-          setRoomName(e.target.value);
+          setRoomName(e.target.value.toLowerCase());
         }}
       ></input>
       <button className="page-buttons" id="join-button" onClick={joinRoom}>

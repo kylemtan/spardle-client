@@ -14,14 +14,14 @@ function End(props) {
     if(props.users){
       let userArray = [];
       userArray = props.users;
-      userArray.sort((a, b) => (a.score > b.score) ? 1 : -1)
+      userArray.sort((a, b) => (a.score > b.score) ? -1 : 1)
       setEndUsers([...userArray]);
     }
 
   }, [props.users]);
 
   function returnMenu() {
-    navigate("/");
+    window.location.reload();
   }
 
   function rejoinRoom() {
@@ -52,9 +52,9 @@ function End(props) {
       <button className="page-buttons" onClick={returnMenu}>
         Exit to Main Menu
       </button>
-      <button className="page-buttons" onClick={rejoinRoom}>
+      {/* <button className="page-buttons" onClick={rejoinRoom}>
         Rejoin Room
-      </button>
+      </button> */}
     </div>
   );
 }
