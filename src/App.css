@@ -47,7 +47,24 @@ html, body {
   position: relative;
 }
 
+.page-buttons-example {
+  border: none;
+  border-radius: 50px;
+  padding: 7px;
+  background-color: rgb(71, 163, 255);
+  color: white;
+  font-size: 15px;
+  margin: 5px 0;
+  cursor: pointer;
+  box-shadow: 0 5px rgb(0, 80, 160);
+  position: relative;
+}
+
 .page-buttons:hover {
+  background-color: rgb(0, 128, 255);
+}
+
+.page-buttons-example:hover {
   background-color: rgb(0, 128, 255);
 }
 
@@ -85,4 +102,18 @@ html, body {
   align-items: center;
   padding-bottom: 20px;
   padding: 10px 20px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.big-s {
+  height: 40px;
+}
+
+.raise-to-meet-logo {
+  position: relative;
+  bottom: 4px;
+  right: 3px;
 }

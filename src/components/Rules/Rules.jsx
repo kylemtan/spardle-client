@@ -15,19 +15,18 @@ function Rules() {
       <h2>Rules</h2>
       <div className="rule-container">
         <p className="rule-line">
-          Enter a username and room name and click join room.
+          Enter a "username" and create a "room name" and click <button className="page-buttons-example">Join Room</button>.
         </p>
         <p className="rule-line">
-          Invite your friends to join the same room as you.{" "}
+          Invite your friends to join the same room as you.
         </p>
         <p className="rule-line">
-          Once you have two or more players, anyone can start the game.
+          Once you have two or more players, anyone can start the game by clicking <button className="page-buttons-example">Spardle!</button>.
         </p>
-        <p className="rule-line">Game rules:</p>
+        <p className="rule-line"><b className="underline">GAME RULES:</b></p>
         <p className="rule-line">You have six tries to guess the word.</p>
         <p className="rule-line">
-          Each guess must be a valid 5-letter word. Hit enter or submit to
-          submit.
+          Each guess must be a valid 5-letter word. Hit enter or click <button className="page-buttons-example">Submit</button> to confirm your guess.
         </p>
         <p className="rule-line">
           After each guess, the color of the tiles will change to show how close
@@ -46,9 +45,9 @@ function Rules() {
           Upon guessing the word in six tries or less, you will receive a point.
         </p>
         <p className="rule-line">
-          If you cannot guess the word in 6 tries, you will lose a point.
+          If you cannot guess the word in 6 tries, you will lose a point. You cannot have a negative number of points.
         </p>
-        <p className="rule-line">First person to 6 points wins!</p>
+        <p className="rule-line">First person to 5 points wins! The game will also end after 7 minutes.</p>
       </div>
       <button className="page-buttons" onClick={returnHome}>Return to Home</button>
     </div>

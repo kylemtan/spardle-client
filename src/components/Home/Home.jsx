@@ -3,6 +3,7 @@ import "./Home.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import logo512 from "../../components/logo512.png";
 
 function Home(props) {
   const [username, setUsername] = useState("");
@@ -53,7 +54,7 @@ function Home(props) {
     <div className="page-container">
       <div className="centered-box-container">
         <div className="centered-box">
-          <h1 className="page-headers">Spardle!</h1>
+          <h1 className="page-headers"><img className="big-s" src={logo512}/><span className="raise-to-meet-logo">pardle!</span></h1>
           <input
             autoFocus
             placeholder="Username..."
@@ -77,7 +78,7 @@ function Home(props) {
         </div>
       </div>
       <div className="bottom-right">
-        <p>A game by Kyle Macasilli-Tan <Link to="/about">About</Link> <Link to="Rules">Rules</Link></p>
+        <p>A game by Kyle Macasilli-Tan <Link to="/about">About</Link> <Link to="/rules">Rules</Link></p>
       </div>
     </div>
   );

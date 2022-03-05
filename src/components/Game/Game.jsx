@@ -13265,12 +13265,6 @@ function Game(props) {
 
   return (
     <div className="page-container">
-      <ul className="game-leaderboard">
-        <h1 style={{marginTop: 0}}>Leaderboard:</h1>
-        {props.users.map((user, index) => (
-          <li className="game-leaderboard-item" key={user.username + index}>{user.username}: {user.score}</li>
-        ))}
-      </ul>
       <p className="game-timer">{Math.floor(seconds / 60)}:{('0' + (seconds % 60)).slice(-2)}</p>
       <div>
         {entries.map((array, index1) => (
@@ -13288,7 +13282,7 @@ function Game(props) {
         ))}
       </div>
       <p id="message"></p>
-      <button className="page-buttons" onClick={submitGuess}>Submit Guess</button>
+      <button className="page-buttons hide-button" onClick={submitGuess}>Submit Guess</button>
       <div className="letterContainer">
       <div
             id="letterq"
@@ -13575,6 +13569,12 @@ function Game(props) {
           </div>
       </div>      
       <h1 className="fadeOut" id="banner">GO!</h1>
+      <ul className="game-leaderboard">
+        <h1 style={{marginTop: 0}}>Leaderboard:</h1>
+        {props.users.map((user, index) => (
+          <li className="game-leaderboard-item" key={user.username + index}>{user.username}: {user.score}</li>
+        ))}
+      </ul>
     </div>
   );
 }
