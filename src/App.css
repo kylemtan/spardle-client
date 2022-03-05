@@ -83,7 +83,8 @@ html, body {
 }
 
 .centered-box {
-  width: 313px;
+  max-width: calc(100vw - 40px);
+  width: 400px;
   background: #ffffff;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
@@ -91,6 +92,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   padding: 0 10px 20px 10px;
+  max-height: 
 }
 
 .centered-box-lobby {
@@ -119,16 +121,10 @@ html, body {
 }
 
 .tagline {
-  font-size: 4vw;
+  font-size: 20px;
 }
 
 .spardletan {
   height: 150px;
   margin-top: 30px;
-}
-
-@media screen and (min-width: 500px) {
-  .tagline {
-     font-size: 20px;
-  }
 }

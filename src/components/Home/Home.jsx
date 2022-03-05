@@ -72,15 +72,15 @@ function Home(props) {
               setRoomName(e.target.value.toLowerCase());
             }}
           ></input>
+                <div className="bottom-right">
+        <p className="tagline">Created by Kyle Macasilli-Tan <Link to="/about">About</Link> <Link to="/rules">Rules</Link></p>
+      </div>
           <p style={{display: "none"}} id="error"></p>
           <button className="page-buttons" id="join-button" onClick={joinRoom}>
             Join Room
           </button>
           
         </div>
-      </div>
-      <div className="bottom-right">
-        <p className="tagline">Created by Kyle Macasilli-Tan <Link to="/about">About</Link> <Link to="/rules">Rules</Link></p>
       </div>
     </div>
   );
