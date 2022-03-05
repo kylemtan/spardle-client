@@ -21,9 +21,9 @@ function About() {
         I love playing with my friends, and our competitive spirit made us want to find
         the true Wordle champion. Other forks of Wordle didn't allow for the type of gameplay that made
         competing easy and automatic. I decided to develop an app to get everyone on a virtual room with a
-        timer, a scoreboard and other game basics to even the playing field. I also wanted the ability to be able to have unlimited rounds of
+        timer, a scoreboard and other game basics to even the playing field. I also wanted the ability to have unlimited rounds of
         competition. <b>Spardle!</b> was born. This is a beta version of the game, and I plan to make many improvements
-        and other features over time. 
+        and other features over time.{" "}
         {/* I welcome any suggestions from players, and will try to accommodate them
         where practical and useful. 
         You can send ideas and requests to{" "}

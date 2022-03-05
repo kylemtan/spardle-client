@@ -13227,12 +13227,16 @@ function Game(props) {
         checkWord.includes(guess[i]) &&
         guessCount + correctCounts <= wordCount
       ) {
-        document.getElementById("letter" + guess[i].toLowerCase()).style.backgroundColor =
+        if(document.getElementById("letter" + guess[i].toLowerCase()).style.backgroundColor !== "green"){
+          document.getElementById("letter" + guess[i].toLowerCase()).style.backgroundColor =
           "yellow";
+        }
         tempYellowEntries[currentInputRow][i] = true;
       } else {
-        document.getElementById("letter" + guess[i].toLowerCase()).style.backgroundColor =
+        if(document.getElementById("letter" + guess[i].toLowerCase()).style.backgroundColor !== "green" && document.getElementById("letter" + guess[i].toLowerCase()).style.backgroundColor !== "yellow"){
+          document.getElementById("letter" + guess[i].toLowerCase()).style.backgroundColor =
           "lightgray";
+        }
       }
     }
 
