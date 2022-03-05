@@ -117,3 +117,18 @@ html, body {
   bottom: 4px;
   right: 3px;
 }
+
+.tagline {
+  font-size: 4vw;
+}
+
+.spardletan {
+  height: 150px;
+  margin-top: 30px;
+}
+
+@media screen and (min-width: 500px) {
+  .tagline {
+     font-size: 20px;
+  }
+}

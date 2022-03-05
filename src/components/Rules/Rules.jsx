@@ -2,6 +2,8 @@ import React from "react";
 import "./Rules.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import logo512 from "../../components/logo512.png";
+
 
 function Rules() {
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ function Rules() {
 
   return (
     <div className="page-container">
-      <h2>Rules</h2>
+      <h2><img className="big-s" src={logo512}/><span className="raise-to-meet-logo">pardle! Gameplay</span></h2>
       <div className="rule-container">
         <p className="rule-line">
           Enter a "username" and create a "room name" and click <button className="page-buttons-example">Join Room</button>.
@@ -23,7 +25,7 @@ function Rules() {
         <p className="rule-line">
           Once you have two or more players, anyone can start the game by clicking <button className="page-buttons-example">Spardle!</button>.
         </p>
-        <p className="rule-line"><b className="underline">GAME RULES:</b></p>
+        <p className="rule-line"><b className="underline">SPARDLE! GAME RULES:</b></p>
         <p className="rule-line">You have six tries to guess the word.</p>
         <p className="rule-line">
           Each guess must be a valid 5-letter word. Hit enter or click <button className="page-buttons-example">Submit</button> to confirm your guess.
