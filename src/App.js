@@ -5,7 +5,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/Home/Home.jsx";
 import Lobby from "./components/Lobby/Lobby.jsx";
 import Game from "./components/Game/Game.jsx";
-import End from "./components/End/End.jsx"
+import End from "./components/End/End.jsx";
+import About from "./components/About/About.jsx";
+import Rules from "./components/Rules/Rules.jsx";
 import { useState } from "react";
 
 // const socket = io.connect("http://localhost:1337");
@@ -21,7 +23,6 @@ function App() {
     setUsername(username);
     setRoomName(room);
   };
-
   return (
     <BrowserRouter>
       <Routes>
@@ -65,6 +66,20 @@ function App() {
           element={<End setUsers={(e) => {
             setUsers(e);
           }} socket={socket} users={users} username={username} words={words} room={roomName} />}
+        />
+                <Route
+          path="/about"
+          element={
+            <About
+            />
+          }
+        />
+                <Route
+          path="/rules"
+          element={
+            <Rules
+            />
+          }
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
