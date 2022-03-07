@@ -66,12 +66,12 @@ function Home(props) {
     <div className="page-container">
       <div className="centered-box-container">
         <div className="centered-box">
-          <img className="spardletan" src={spardletan} />
+          {/* <img className="spardletan" src={spardletan} /> */}
           <h1 className="page-headers"><img className="big-s" src={logo512}/><span className="raise-to-meet-logo">pardle!</span></h1>
           <button className="page-buttons" onClick={joinPublicRoom}>
             Join a Public Room
           </button>
-          <h2>Join Room with Code</h2>
+          <h2>Or Join Room with Code</h2>
           <input
             autoFocus
             placeholder="Username..."
