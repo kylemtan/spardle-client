@@ -12,8 +12,12 @@ function Home(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    props.socket.on("return roomname", (data) => {
+      props.setVars(username, data);
+    });
     props.socket.on("update users", (data) => {
       props.setUsers(data);
+      console.log(0);
       navigate("/lobby");
     });
     props.socket.on("already started", (data) => {
@@ -35,6 +39,17 @@ function Home(props) {
     } else {
       document.getElementById("error").innerHTML =
         "You must fill in both fields.";
+        document.getElementById("error").style.display = "block";
+
+    }
+  };
+
+  const joinPublicRoom = () => {
+    if (username !== "") {
+      props.socket.emit("joinPublic", username);
+    } else {
+      document.getElementById("error").innerHTML =
+        "You must fill in a username.";
         document.getElementById("error").style.display = "block";
 
     }
@@ -78,6 +93,9 @@ function Home(props) {
           <p style={{display: "none"}} id="error"></p>
           <button className="page-buttons" id="join-button" onClick={joinRoom}>
             Join Room
+          </button>
+          <button className="page-buttons" onClick={joinPublicRoom}>
+            Join a Public Room
           </button>
           
         </div>
