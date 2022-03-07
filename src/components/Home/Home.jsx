@@ -46,13 +46,9 @@ function Home(props) {
 
   const joinPublicRoom = () => {
     if (username !== "") {
-      props.socket.emit("joinPublic", username);
-    } else {
-      document.getElementById("error").innerHTML =
-        "You must fill in a username.";
-        document.getElementById("error").style.display = "block";
-
+      setUsername("Guest");
     }
+    props.socket.emit("joinPublic", username);
   };
 
   useEffect(() => {
