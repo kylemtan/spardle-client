@@ -12990,7 +12990,7 @@ function Game(props) {
     "z",
   ];
 
-  const [seconds, setSeconds] = useState(420);
+  const [seconds, setSeconds] = useState(2);
 
   const [entries, setEntries] = useState([
     ["", "", "", "", ""],
@@ -13024,13 +13024,10 @@ function Game(props) {
     let interval = setInterval(() => {
       setSeconds(seconds => seconds - 1);
     }, 1000);
-    console.log("use effect ran")
     if(isMounted){
     document.addEventListener("keydown", (e) => {
 
-        console.log("key held down")
         if (keyName !== e.key) {
-          console.log("function triggered")
           keyName = e.key;
           onKeyPress(e);
         }
@@ -13041,16 +13038,12 @@ function Game(props) {
 
   }
     return () => { isMounted = false; 
-      console.log("set false")
       clearInterval(interval);}
   }, []);
 
   useEffect(() => {
-    console.log(0)
     if(isMounted){
-      console.log(1)
     if(seconds <= 0){
-      console.log(0);
       props.socket.emit("end game", props.room);
     }
   }
@@ -13065,7 +13058,6 @@ function Game(props) {
       props.setUsers(data);
     });
     props.socket.on("banner", (object) => {
-      console.log(object)
       if(object.correct){
         document.getElementById("banner").innerHTML = object.username + " + 1!"
         document.getElementById("banner").style.color = "green"
@@ -13082,6 +13074,7 @@ function Game(props) {
     });
     props.socket.on("end game", (data) => {
       props.setUsers(data);
+      props.setFinalWord(word);
       newWord();
       props.socket.emit("leave", props.room);
       navigate("/end");
@@ -13096,7 +13089,6 @@ function Game(props) {
   }, [props.words]);
 
   function onKeyPress(event) {
-    console.log("got into function");
     let tempEntries = entries[currentInputRow];
     if (event.key === "Backspace") {
       for (let i = 0; i < tempEntries.length; i++) {
@@ -13112,15 +13104,12 @@ function Game(props) {
       for (let i = 0; i < tempEntries.length; i++) {
         if (tempEntries[i] === "") {
           tempEntries[i] = event.key.toUpperCase();
-          console.log("attempted key change")
           break;
         }
       }
     }
     let tempArray = entries;
     tempArray[currentInputRow] = tempEntries;
-  console.log(tempArray)
-  console.log(entries)
     setEntries([...tempArray]);
   }
 

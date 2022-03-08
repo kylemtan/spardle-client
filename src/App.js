@@ -10,14 +10,15 @@ import About from "./components/About/About.jsx";
 import Rules from "./components/Rules/Rules.jsx";
 import { useState } from "react";
 
-// const socket = io.connect("http://localhost:1337");
-const socket = io.connect("https://spardle.herokuapp.com/");
+const socket = io.connect("http://localhost:1337");
+// const socket = io.connect("https://spardle.herokuapp.com/");
 
 function App() {
   const [username, setUsername] = useState("");
   const [roomName, setRoomName] = useState("");
   const [words, setWords] = useState([]);
   const [users, setUsers] = useState([]);
+  const [finalWord, setFinalWord] = useState("");
 
   const setVars = (username, room) => {
     setUsername(username);
@@ -57,30 +58,39 @@ function App() {
         />
         <Route
           path="/game"
-          element={<Game setUsers={(e) => {
-            setUsers(e);
-          }} socket={socket} users={users} room={roomName} words={words} />}
+          element={
+            <Game
+              setUsers={(e) => {
+                setUsers(e);
+              }}
+              socket={socket}
+              users={users}
+              room={roomName}
+              words={words}
+              setFinalWord={(e) => {
+                setFinalWord(e);
+              }}
+            />
+          }
         />
         <Route
           path="/end"
-          element={<End setUsers={(e) => {
-            setUsers(e);
-          }} socket={socket} users={users} username={username} words={words} room={roomName} />}
-        />
-                <Route
-          path="/about"
           element={
-            <About
+            <End
+              setUsers={(e) => {
+                setUsers(e);
+              }}
+              socket={socket}
+              users={users}
+              username={username}
+              words={words}
+              room={roomName}
+              finalWord={finalWord}
             />
           }
         />
-                <Route
-          path="/rules"
-          element={
-            <Rules
-            />
-          }
-        />
+        <Route path="/about" element={<About />} />
+        <Route path="/rules" element={<Rules />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

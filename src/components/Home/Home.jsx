@@ -17,7 +17,6 @@ function Home(props) {
     });
     props.socket.on("update users", (data) => {
       props.setUsers(data);
-      console.log(0);
       navigate("/lobby");
     });
     props.socket.on("already started", (data) => {
