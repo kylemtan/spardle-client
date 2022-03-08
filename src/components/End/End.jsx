@@ -55,7 +55,7 @@ function End(props) {
         ))}
       </ul> : <h1>Loading...</h1>}
       <h1>Words</h1>
-      { props.finalWord ? <p>The last word was {props.finalWord}</p> : ""}
+      { props.finalWord ? <p>The last word was {props.finalWord}!</p> : ""}
       <p>
       {endWords.map((word, index) => (
           <span>{word.word}, </span>
