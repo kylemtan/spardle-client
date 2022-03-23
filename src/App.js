@@ -10,8 +10,8 @@ import About from "./components/About/About.jsx";
 import Rules from "./components/Rules/Rules.jsx";
 import { useState } from "react";
 
-// const socket = io.connect("http://localhost:1337");
-const socket = io.connect("https://spardle.herokuapp.com/");
+const socket = io.connect("http://localhost:1337");
+// const socket = io.connect("https://spardle.herokuapp.com/");
 
 function App() {
   const [username, setUsername] = useState("");
