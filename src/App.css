@@ -14,11 +14,15 @@ html, body {
 .page-container {
   width: 100%;
   height: 100vh;
-  background-color: #FFD700;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
+  overflow-x: hidden;
+  background: url(components/background.png);
+  background-position: center;
+  background-size: cover;
+  /* background-repeat: no-repeat; */
 }
 
 .page-headers {
@@ -29,16 +33,16 @@ html, body {
 .page-inputs {
   width: 200px;
   padding: 10px;
-  border: 5px solid rgb(71, 163, 255);
+  border: none;
   border-radius: 50px;
-  margin: 10px 0;
+  margin: 15px;
 }
 
 .page-buttons {
   border: none;
   border-radius: 50px;
   padding: 10px;
-  background-color: rgb(71, 163, 255);
+  background-color: rgb(41, 148, 255);
   color: white;
   font-size: 20px;
   margin: 10px 0;

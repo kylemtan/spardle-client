@@ -1,5 +1,45 @@
+.lobby-wrapper {
+    background: url(../background.png);
+    background-position: "center";
+    background-size: "cover";
+    background-repeat: "no-repeat",
+}
+
+.top-container {
+    height: 150px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-inner-container {
+    height: auto;
+    padding: 20px;
+    height: max-content;
+    min-height: max-content;
+    background: #EEEEEE;
+    display: flex;
+    border-radius: 10px;
+}
+
+.top-inner-container > div > h1 {
+    margin: 0;
+}
+
+.top-inner-container > div > p {
+    margin: 0;
+}
+
+.bottom-container {
+    height: calc(100vh - 150px);
+    text-align: center;
+}
+
 .lobby-list {
     display: flex;
+    justify-content: center;
 }
 
 .lobby-list-item {

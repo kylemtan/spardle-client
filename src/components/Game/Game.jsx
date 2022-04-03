@@ -12990,7 +12990,12 @@ function Game(props) {
     "z",
   ];
 
-  const [seconds, setSeconds] = useState(420);
+  const [seconds, _setSeconds] = useState(420);
+  const secondsRef = React.useRef(seconds);
+  const setSeconds = (data) => {
+    secondsRef.current = data;
+    _setSeconds(data);
+  };
 
   const [entries, setEntries] = useState([
     ["", "", "", "", ""],
@@ -13259,6 +13264,7 @@ function Game(props) {
   return (
     <div className="page-container">
       <p className="game-timer">{Math.floor(seconds / 60)}:{('0' + (seconds % 60)).slice(-2)}</p>
+      <div style={{backgroundColor: "#EEEEEE", height: "20px", width: "300px"}}><div style={{width: seconds / 7 * 5 + "px", backgroundColor: "aqua", height: "20px"}}></div></div>
       <div>
         {entries.map((array, index1) => (
           <div key={"top" + index1} className="entryRow">
@@ -13275,7 +13281,6 @@ function Game(props) {
         ))}
       </div>
       <p id="message"></p>
-      <button className="page-buttons hide-button" onClick={submitGuess}>Submit Guess</button>
       <div className="letterContainer">
       <div
             id="letterq"
@@ -13477,6 +13482,7 @@ function Game(props) {
               key: "Enter",
               keyCode: "0"
             })}}
+            style={{fontSize: "40px"}}
           >
             ↵
           </div>
@@ -13568,6 +13574,7 @@ function Game(props) {
           <li className="game-leaderboard-item" key={user.username + index}>{user.username}: {user.score}</li>
         ))}
       </ul>
+      <p className="hold-instructions">Hold gray tab for leaderboard</p>
     </div>
   );
 }

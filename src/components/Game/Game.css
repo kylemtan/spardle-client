@@ -3,8 +3,10 @@
   }
   
   .entry {
-    width: 8vh;
-    height: 8vh;
+    width: 15vw;
+    max-height: 50px;
+    max-width: 50px;
+    height: 15vw;
     margin: 2.5px;
     font-family: Ubuntu;
     font-weight: 800;
@@ -34,7 +36,7 @@
   .letter {
     cursor: pointer;
     border-radius: 5px;
-    max-width: 32px;
+    max-width: 50px;
     width: calc(10vw - 2px);
     max-height: 50px;
     height: calc((9.09vw - 2px)/3*5);
@@ -108,15 +110,38 @@
     100% {opacity:0; top: calc(50vh - 50px);}
   }
 
+  .hold-instructions {
+    display: none;
+  }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1150px) {
     .game-leaderboard {
-      position: static;
-      width: calc(100% - 20px);
+      top: 0;
+      right: -320px;
+      position: absolute;
+      width: 300px;
       border-radius: 0px;
       padding: 10px;
-      background-color: rgb(71, 163, 255);
-      height: auto;
+      background-color: #EEEEEE;
+      height: calc(50vh - 20px);
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding-left: 40px;
+      transition: 0.5s right ease-in-out;
+      z-index: 2;
+    }
+
+    .hold-instructions {
+      display: block;
+      position: absolute;
+      right: 30px;
+      top: 0;
+      margin: 0;
+    }
+
+    .game-leaderboard:active {
+      right: -0px;
     }
   
     .game-leaderboard-item {
